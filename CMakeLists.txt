@@ -12,14 +12,14 @@ add_subdirectory(src)
 
 #This is for testing, build with cmake -DENABLE_DOCTEST=ON
 #if you want to build test executable 
-option(DISABLE_DOCTEST "This is an option for disable building test exe" ON)
-if(DISABLE_DOCTEST)
-    add_executable(${executable_name} main.cpp)
-    target_include_directories(${executable_name} PUBLIC ${CMAKE_SOURCE_DIR}/include)
-    target_link_libraries(${executable_name} PUBLIC )
-else()
+#option(DISABLE_DOCTEST "This is an option for disable building test exe" ON)
+#if(DISABLE_DOCTEST)
+ #   add_executable(${executable_name} main.cpp)
+  #  target_include_directories(${executable_name} PUBLIC ${CMAKE_SOURCE_DIR}/include)
+   # target_link_libraries(${executable_name} PUBLIC )
+#else()
     add_subdirectory(tests)
-endif()
+#endif()
 
 
 
