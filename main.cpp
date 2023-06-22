@@ -10,13 +10,12 @@ int get_user_int()
     int value;
     while (true)
     {
-        std::cout << "Input integer value: ";
         std::cin >> value;
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         if (!std::cin)
         {
-            std::cin.clear()
+            std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             continue;
         }
@@ -29,13 +28,12 @@ double get_user_double()
     double value;
     while (true)
     {
-        std::cout << "Input integer value: ";
         std::cin >> value;
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         if (!std::cin)
         {
-            std::cin.clear()
+            std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             continue;
         }
@@ -48,7 +46,6 @@ std::string get_user_string()
     std::string value;
     while (true)
     {
-        std::cout << "Input integer value: ";
         std::getline(std::cin >> std::ws, value);
         return value;
     }
@@ -56,39 +53,49 @@ std::string get_user_string()
 
 void user_loop(User& user)
 {
-    std::cout << "Please choose what you want to do:\n"
+    while (true)
+    {
+        
+        std::cout << "Please choose what you want to do:\n"
         << "1) View transactions\n"
         << "2) Make transaction\n"
         << "3) Calculate incomes, expenses and balance\n"
         << "4) Exit\n";
 
     int choice{ get_user_int() };
+
     switch (choice)
     {
     case 1:
         user.view_transactions();
         break;
     case 2:
+    {
         std::cout << "Please input amount for transaction: ";
         double amount{ get_user_double() };
         std::cout << "\nPlease input name of receiver: ";
         std::string receiver{get_user_string()};
         user.make_transaction(amount, receiver);
         break;
+    }
     case 3:
-        std::cout << "Balance: " << user.calculate_balance() ", Expenses: " << user.calculate_expenses()
-            << ", Incomes: " << user.calculate_incomes() << '\n';
+        std::cout << "Balance: " << user.calculate_balance();
+        std::cout << ", Expenses: " << user.calculate_expenses();
+        std::cout << ", Incomes: " << user.calculate_incomes() << '\n';
         break;
     case 4:
+        write_user_to_file(user);
         return;
-
+    default:
+        break;
+    }
     }
 
 }
 int main()
 {
     Transaction transaction1{ 1000.00, "Receiver" };
-     User user{"User1"};
+    User user{"User1"};
     user.make_transaction( transaction1 );
 
     Transaction transaction2{ -500.25, "Receiver1" };
