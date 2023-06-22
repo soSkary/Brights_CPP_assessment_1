@@ -17,7 +17,7 @@ Transaction::Transaction(const double amount, std::string_view receiver)
 
 std::ostream& operator<<(std::ostream& out, Transaction transaction)
 {
-    out << transaction.m_amount << "€, " << std::put_time(std::localtime(&transaction.m_date_and_time), "%F - %T, ")
-        << transaction.m_id << " -> " << transaction.m_receiver;
+    out << transaction.m_amount << "€, " << std::put_time(std::localtime(&transaction.m_date_and_time), "%F-%T, ")
+        << transaction.m_id << ", " << transaction.m_receiver;
     return out;
 }

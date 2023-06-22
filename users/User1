@@ -1,0 +1,4 @@
+name, amount, time, transaction_id, receiver/sender
+User1, 1000€, 2023-06-22-11:47:00, 0, Receiver
+User1, -500.25€, 2023-06-22-11:47:00, 1, Receiver1
+User1, -999.75€, 2023-06-22-11:47:00, 2, Receiver2
